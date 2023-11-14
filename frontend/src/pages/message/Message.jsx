@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import "./Message.scss"
 
 export const Message = () => {
