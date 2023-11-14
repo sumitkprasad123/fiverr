@@ -3,6 +3,6 @@ import "./Message.scss"
 
 export const Message = () => {
   return (
-    <div>Message</div>
+    <div className='message'>Message</div>
   )
 }
