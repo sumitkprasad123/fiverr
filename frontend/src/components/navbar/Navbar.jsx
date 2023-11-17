@@ -36,10 +36,10 @@ const Navbar = () => {
               <span>English</span>
               <span>Sign In</span>
               {!currentUser?.isSeller && <span>Become a seller</span>}
-              {!currentUser && <button>Join</button>}
+              {!currentUser && <button  className={active || pathname !== "/"?'button active':'button'}>Join</button>}
               {currentUser && (
                 <div className="user" onClick={() => setOpen(!open)}>
-                   <img src="https://avatars.githubusercontent.com/u/107460715?v=4" alt="" />
+                   <img src={"./img/man.png"} alt="" />
                    <span>{currentUser?.username}</span>
                   { open && <div className="option">
                       {
@@ -50,7 +50,7 @@ const Navbar = () => {
                           </>
                         )
                       }
-                      <Link className='link' to="/order">Order</Link>
+                      <Link className='link' to="/orders">Order</Link>
                       <Link className='link' to="/messages">Messages</Link>
                       <Link className='link' to="/">Logout</Link>
                    </div>}

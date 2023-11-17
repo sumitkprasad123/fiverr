@@ -12,7 +12,7 @@ import Register from './pages/register/Register';
 import Orders from './pages/orders/Orders';
 import MyGigs from './pages/myGigs/MyGigs';
 import Messages from './pages/messages/Messages';
-import { Message } from './pages/message/Message';
+import Message from './pages/message/Message';
 import Add from './pages/add/Add';
 import Gigs from './pages/gigs/Gigs';
 import Gig from './pages/gig/Gig';
