@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken"
 // registation of new user
 export const register = async(req,res) => {
         try{
+            // secureing the password before store in database
            const hash = bcrypt.hashSync(req.body.password,5)
            const new_user = new User({
             ...req.body,
@@ -27,7 +28,7 @@ export const login = async(req,res) => {
 
         const isCorrect = bcrypt.compareSync(req.body.password,user.password)
         if(!isCorrect) return res.status(404).send("Wrong password or username")
-
+        // genrating new token to the authentication purpose
         const token = jwt.sign(
           {
             id: user._id,
@@ -37,7 +38,7 @@ export const login = async(req,res) => {
         );
 
         const {password, ...rest} = user._doc
-
+        // store token in cookie to use authentication
          res
          .cookie("accessToken",token, {
             httpOnly:true,
