@@ -1,16 +1,17 @@
 import express from "express"
 import dotenv from "dotenv"
 import connection from "./db.js"
-
+import userRouter from "./routes/user.route.js"
+import authRouter from "./routes/auth.router.js"
 
 const app = express()
 dotenv.config()
 
 app.use(express.json())
 
-app.get("/",(req,res) => {
-    res.send("welcome the backend of fiverr")
-})
+app.use("/api/users",userRouter)
+app.use("/api/auth",authRouter)
+
 
 app.listen(process.env.PORT, async() => {
    try{
