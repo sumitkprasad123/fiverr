@@ -9,6 +9,7 @@ import {projects} from "../../data"
 import ProjectCard from "../../components/projectCard/ProjectCard"
 
 const Home = () => {
+  
   return (
     <div className='home'>
        <Featured />

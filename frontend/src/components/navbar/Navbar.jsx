@@ -1,6 +1,7 @@
-import {useState,useEffect} from 'react'
-import { Link, useLocation } from "react-router-dom"
+import { useState,useEffect } from 'react'
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import "./Navbar.scss"
+import newRequest from "../../utils/newRequest.js"
 
 const Navbar = () => {
   const [active,setActive] = useState(false);
@@ -14,13 +15,26 @@ const Navbar = () => {
     window.addEventListener("scroll",isActive)
   },[])
 
-  const currentUser = {
-      id:1,
-      username:"Jhon Doe ",
-      isSeller:true
-  }
+  // const currentUser = {
+  //     id:1,
+  //     username:"Jhon Doe ",
+  //     isSeller:true
+  // }
 //  const currentUser = null
-  
+ const currentUser = JSON.parse(localStorage.getItem("currentUser")); 
+ 
+ const navigate = useNavigate();
+
+ const handleLogout = async () => {
+      try{
+        await newRequest.post("/auth/logout");
+        localStorage.setItem("currentUser",null)
+        navigate("/")
+      }catch(err){
+        console.log(err)
+      }
+ };
+
   return (
     <div className={active || pathname !== "/"?'navbar active':'navbar'}>
        <div className="container">
@@ -39,7 +53,7 @@ const Navbar = () => {
               {!currentUser && <button  className={active || pathname !== "/"?'button active':'button'}>Join</button>}
               {currentUser && (
                 <div className="user" onClick={() => setOpen(!open)}>
-                   <img src={"./img/man.png"} alt="" />
+                   <img src={currentUser.img || "./img/noavatar.jpg"} alt="" />
                    <span>{currentUser?.username}</span>
                   { open && <div className="option">
                       {
@@ -52,7 +66,7 @@ const Navbar = () => {
                       }
                       <Link className='link' to="/orders">Order</Link>
                       <Link className='link' to="/messages">Messages</Link>
-                      <Link className='link' to="/">Logout</Link>
+                      <Link className='link' onClick={handleLogout}>Logout</Link>
                    </div>}
                 </div>
               )}
