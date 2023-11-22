@@ -24,7 +24,7 @@ const Gig = () => {
                    <span>5</span>
                 </div>
             </div>
-            <Slider slidetoShow={1} arrowScroll={1}className="slider">
+            <Slider slidetoShow={1} arrowScroll={1} className="slider">
                 <img
                   src="https://images.pexels.com/photos/1074535/pexels-photo-1074535.jpeg?auto=compress&cs=tinysrgb&w=1600"
                   alt=""
@@ -62,7 +62,7 @@ const Gig = () => {
                     src="https://images.pexels.com/photos/720327/pexels-photo-720327.jpeg?auto=compress&cs=tinysrgb&w=1600"
                     alt=""
                  />
-                 <div className="info">
+                <div className="info">
                    <span>Anna Bell</span>
                    <div className="stars">
                       <img src="/img/star.png" alt="" />
@@ -73,8 +73,8 @@ const Gig = () => {
                       <span>5</span>
                    </div>
                    <button>Contact Me</button>
-                 </div>
                 </div>
+              </div>
                 {/* user contact information */}
                 <div className="box">
                     <div className="items">

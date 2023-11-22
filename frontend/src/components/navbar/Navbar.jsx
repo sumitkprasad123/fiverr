@@ -12,7 +12,7 @@ const Navbar = () => {
       window.scrollY > 0 ?setActive(true):setActive(false)
   }
   useEffect(() => {
-    window.addEventListener("scroll",isActive)
+      window.addEventListener("scroll",isActive)
   },[])
 
   // const currentUser = {
