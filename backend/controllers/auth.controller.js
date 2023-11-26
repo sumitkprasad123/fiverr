@@ -9,15 +9,15 @@ export const register = async(req,res,next) => {
             // secureing the password before store in database
            const hash = bcrypt.hashSync(req.body.password,5)
            const new_user = new User({
-            ...req.body,
-            password:hash
-        })
+                                 ...req.body,
+                                 password:hash
+                             })
            await new_user.save()
            res.status(201).send("registration successfull")
         }catch(err){
             next(err)
          }
-}
+  }
 
 // login of user
 export const login = async(req,res,next) => {
