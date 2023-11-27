@@ -4,6 +4,7 @@ import connection from "./db.js"
 import userRouter from "./routes/user.router.js"
 import authRouter from "./routes/auth.router.js"
 import gigRouter from "./routes/gig.router.js"
+import reviewRouter from "./routes/review.route.js";
 import cookieParser from "cookie-parser"
 import cors from "cors"
 
@@ -18,7 +19,8 @@ app.use(express.json())
 
 app.use("/api/users",userRouter)
 app.use("/api/auth",authRouter)
-app.use("/api/gig",gigRouter)
+app.use("/api/gigs",gigRouter)
+app.use("/api/reviews", reviewRouter);
 
 // it's a global error-handling middleware because it doesn't specify a path,
 // meaning it will be called for all routes.

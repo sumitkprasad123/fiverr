@@ -1,3 +1,5 @@
+
+
 import User from "../models/user.model.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
@@ -11,7 +13,7 @@ export const register = async(req,res,next) => {
            const new_user = new User({
                                  ...req.body,
                                  password:hash
-                             })
+                             });
            await new_user.save()
            res.status(201).send("registration successfull")
         }catch(err){
@@ -42,7 +44,7 @@ export const login = async(req,res,next) => {
         // store token in cookie to use authentication
          res
          .cookie("accessToken",token, {
-            httpOnly:true,
+            HttpOnly:true,
          })
          .status(200).send(rest)
     }catch(err){

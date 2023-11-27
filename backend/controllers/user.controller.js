@@ -1,5 +1,4 @@
 import User from "../models/user.model.js"
-import jwt from "jsonwebtoken"
 import createError from "../utils/createError.js"
 
 // deleteing the user
