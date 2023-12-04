@@ -13,14 +13,11 @@ const Navbar = () => {
   }
   useEffect(() => {
       window.addEventListener("scroll",isActive)
+      return () => {
+        window.removeEventListener("scroll", isActive);
+      };
   },[])
 
-  // const currentUser = {
-  //     id:1,
-  //     username:"Jhon Doe ",
-  //     isSeller:true
-  // }
-//  const currentUser = null
  const currentUser = JSON.parse(localStorage.getItem("currentUser")); 
  
  const navigate = useNavigate();
@@ -41,14 +38,14 @@ const Navbar = () => {
           <div className="logo">
             <Link to="/" className='link'> 
               <span className="text">fiverr</span>
-              <span className="dot">.</span>
             </Link>
+            <span className="dot">.</span>
           </div>
           <div className="links">
               <span>Fiverr Business</span>
               <span>Explore</span>
               <span>English</span>
-              <span>Sign In</span>
+              <Link to="/login" className='link'>Sign In</Link>
               {!currentUser?.isSeller && <span>Become a seller</span>}
               {!currentUser && <button  className={active || pathname !== "/"?'button active':'button'}>Join</button>}
               {currentUser && (

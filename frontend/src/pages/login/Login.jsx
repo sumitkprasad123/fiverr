@@ -15,12 +15,12 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try{
-     let res = await axios.post("http://localhost:8800/api/auth/login",{username,password},{withCredentials:true})
+    //  let res = await axios.post("http://localhost:8800/api/auth/login",{username,password},{withCredentials:true})
     //  console.log({"data":res.data})
-      // const res = await newRequest.post("/auth/login",{username,password});
+      const res = await newRequest.post("/auth/login",{username,password});
       console.log({"res":res})
       localStorage.setItem("currentUser",JSON.stringify(res.data))
-      // navigate("/")
+      navigate("/")
     }catch(err){
       setError(err.response.data)
     }

@@ -22,7 +22,7 @@ const Register = () => {
   const handleChange = (e) => {
      setUser((prev) => {
         return { 
-            ...prev, [e.target.value]:e.target.value
+            ...prev, [e.target.name]:e.target.value
         }
      });
   }
@@ -37,17 +37,18 @@ const Register = () => {
       e.preventDefault();
 
       const url = await upload(file);
+      console.log({"u":url})
       try{
-        await newRequest.post("/auth/register", {
-          ...user,
-          img:url,
-        });
-        navigate("/")
+          await newRequest.post("/auth/register", {
+            ...user,
+            img:url,
+          });
+          navigate("/")
       }catch(err){
-        console.log(err)
+          console.log(err)
       }
   }
-
+console.log(file)
   return (
     <div className='register'>
       <form onSubmit={handleSubmit}>
